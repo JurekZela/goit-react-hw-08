@@ -4,7 +4,7 @@ import ContactList from '../Contacts/Contacts';
 import { ContactForm } from '../PhoneBook/Phonebook';
 import { Filter } from '../Filter/Filter';
 import { Card } from '../Contacts/contacts-styled';
-import { fetchContacts } from '../../redux/contactsOps';
+import { fetchContacts } from '../../redux/contacts/operations';
 
 function App() {
   const dispatch = useDispatch();

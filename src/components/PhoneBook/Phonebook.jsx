@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { Button, StyledForm as Form, StyledField as Field, StyledLabel as Label, ErrorMsg, } from './Phonebook-styled';
-import { addContacts } from '../../redux/contactsOps';
+import { addContacts } from '../../redux/contacts/operations';
 
 const SignupSchema = Yup.object().shape({
     name: Yup.string()
