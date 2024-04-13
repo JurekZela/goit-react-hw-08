@@ -1,7 +1,12 @@
-export const AppBar = () => {
+import Navigation from '../Navigation/Navigation.jsx'
+import { Header } from './AppBar.js';
+
+const AppBar = () => {
     return (
-        <header>
-            
-        </header>
+        <Header>
+             <Navigation />
+        </Header>
     )
 };
+
+export default AppBar;
