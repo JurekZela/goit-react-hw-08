@@ -1,9 +1,11 @@
 import { styled } from 'styled-components';
 
 export const Header = styled.header`
-  display: flex;
-  justify-content: space-around;
+display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #2a363b;
+  margin-bottom: 10px;
+  border-bottom: 4px solid;
+  border-image: linear-gradient(to right, #833ab4, #f50057, #fcb045, #b345fc)
+    47% 0%;
 `;

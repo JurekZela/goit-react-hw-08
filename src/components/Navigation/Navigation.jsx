@@ -1,14 +1,18 @@
-import { Nav, NavigationLink } from './Navigation';
+import { Nav, NavigationLinks, UserInfo } from './Navigation';
 
  const Navigation = () => {
     return (
+        <>
         <Nav>
-            <NavigationLink to='/'>
+            <NavigationLinks to='/'>
                 Home
-            </NavigationLink>
-            <NavigationLink to='/register'>Register</NavigationLink>
-            <NavigationLink to='/login'>Log In</NavigationLink>
+            </NavigationLinks>
         </Nav>
+        <UserInfo>
+            <NavigationLinks to='/register'>Register</NavigationLinks>
+            <NavigationLinks to='/login'>Log In</NavigationLinks>
+        </UserInfo>
+        </>
     )
 };
 

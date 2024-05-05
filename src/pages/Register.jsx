@@ -1,8 +1,9 @@
 import { Formik } from "formik";
+import { RegisterStyle, Label, Button, Span, Title, Form, Input } from '../components/Register/Register';
 
 const RegisterForm = () => {
     return (
-        <div>
+        <RegisterStyle>
             <Formik
        initialValues={{ email: '', password: '' }}
        validate={values => {
@@ -31,13 +32,11 @@ const RegisterForm = () => {
          handleBlur,
          handleSubmit,
          isSubmitting,
-         /* and other goodies */
        }) => (
-         <form onSubmit={handleSubmit}>
-           
-            <div>
-            <label><b>Username:</b></label>
-           <input
+         <Form onSubmit={handleSubmit}>
+          <Title>Let's create your account!</Title>
+            <Label>
+              <Input
              type="text"
              placeholder="Enter username"
              name="username"
@@ -46,11 +45,10 @@ const RegisterForm = () => {
              value={values.email}
              required
            />
-            </div>
+              </Label>
           
-           <div>
-           <label><b>Email:</b></label>
-           <input
+           <Label>
+           <Input
              type="email"
              placeholder="Enter Email"
              name="email"
@@ -59,30 +57,29 @@ const RegisterForm = () => {
              value={values.email}
              required
            />
-           </div>
+           </Label>
           
-           {errors.email && touched.email && errors.email}
-          
-           <div>
-            <label><b>Password:</b></label>
-           <input
+            <Label>
+            <Input
              type="password"
              name="password"
+             placeholder="Password"
              onChange={handleChange}
              onBlur={handleBlur}
              value={values.password}
              required
-           />
-           </div>
+           />  
+            </Label>         
            
-           {errors.password && touched.password && errors.password}
-           <button type="submit" disabled={isSubmitting}>
+           <Button type="submit" disabled={isSubmitting}>
+             <Span>
              Register
-           </button>
-         </form>
+             </Span>
+           </Button>
+         </Form>
        )}
      </Formik>
-        </div>
+        </RegisterStyle>
     )
 };
 

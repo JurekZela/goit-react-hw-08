@@ -1,13 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { fetchContacts } from '../../redux/contacts/operations';
-import Layout from '../Layout';
-import RegisterForm from '../../pages/Register.jsx';
-import Login from '../../pages/Login.jsx';
 import ContactList from '../Contacts/Contacts';
-import NotFound from '../../pages/NotFound.jsx'
-import AppBar from '../AppBar/AppBar.jsx';
+import Layout from '../Layout.jsx';
+
+const HomePage = lazy(() => import('../../pages/Home/Home.jsx'));
+const RegisterForm = lazy(() => import('../../pages/Register.jsx'));
+const Login = lazy(() => import('../../pages/Login.jsx'));
+const NotFound = lazy(() => import('../../pages/NotFound.jsx'));
 
 function App() {
   const dispatch = useDispatch();
@@ -17,16 +18,15 @@ function App() {
   }, [dispatch])
 
   return (
-<div>
-<AppBar />
+<Layout>
 <Routes>
-<Route path="/" element={<Layout />} />
+<Route path="/" element={<HomePage />} />
 <Route path="/register" element={<RegisterForm />} />
 <Route path="/login" element={<Login />} />
 <Route path="/contacts" element={<ContactList />} />
 <Route path="*" element={<NotFound />} />
 </Routes>
-</div>
+</Layout>
   )
 }
 

@@ -1,8 +1,11 @@
+import { Suspense } from 'react';
+import AppBar from './AppBar/AppBar.jsx';
 
- const Layout = () => {
+const Layout = ({ children }) => {
     return (
         <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 16px' }}>
-          <p>Task manager welcome page!</p>
+          <AppBar />
+          <Suspense fallback={null}>{children}</Suspense>
       </div>
     )
 };

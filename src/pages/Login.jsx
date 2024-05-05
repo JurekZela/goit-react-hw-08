@@ -1,8 +1,9 @@
 import { Formik } from "formik";
+import { LoginStyle, Label, Button, Span, Form, Title, Input } from '../components/Login/Login';
 
 const Login = () => {
     return (
-        <div>
+        <LoginStyle>
                  <Formik
        initialValues={{ email: '', password: '' }}
        validate={values => {
@@ -33,39 +34,41 @@ const Login = () => {
          isSubmitting,
          /* and other goodies */
        }) => (
-         <form onSubmit={handleSubmit}>
-            <div>
-            <label>Email:</label>
-            <input
+         <Form onSubmit={handleSubmit}>
+            <Title>Welcome!</Title>
+            <Label>
+            <Input
              type="email"
              name="email"
+             placeholder="Email"
              onChange={handleChange}
              onBlur={handleBlur}
              value={values.email}
+             required
            />
-            </div>
+            </Label>
 
-           {errors.email && touched.email && errors.email}
-
-           <div>
-           <label>Password:</label>
-           <input
+           <Label>
+            <Input
              type="password"
              name="password"
+             placeholder="Password"
              onChange={handleChange}
              onBlur={handleBlur}
              value={values.password}
+             required
            />
-           </div>
+           </Label>
 
-           {errors.password && touched.password && errors.password}
-           <button type="submit" disabled={isSubmitting}>
+           <Button type="submit" disabled={isSubmitting}>
+             <Span>
              Log In
-           </button>
-         </form>
+             </Span>
+           </Button>
+         </Form>
        )}
      </Formik>
-        </div>
+        </LoginStyle>
     )
 };
 
