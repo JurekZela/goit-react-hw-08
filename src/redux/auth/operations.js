@@ -24,3 +24,28 @@ export const register = createAsyncThunk(
         }
     }
 );
+
+export const logIn = createAsyncThunk(
+    "auth/logIn",
+    async (credentials, thunkAPI) => {
+        try {
+            const response = axios.post('users/login', credentials);
+            setAuthHeader(response.data.token);
+            return response.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+)
+
+export const logOut = createAsyncThunk(
+    "auth/logOut",
+    async (_, thunkAPI) => {
+        try {
+            await axios.post('/users/logOut');
+            clearAuthHeader()
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
