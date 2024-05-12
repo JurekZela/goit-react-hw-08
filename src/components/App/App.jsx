@@ -1,9 +1,12 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-import { fetchContacts } from '../../redux/contacts/operations';
+import { refreshUser } from '../../redux/auth/operations.js';
+import useAuth from '../../hooks/useAuth.js';
 import ContactList from '../Contacts/Contacts';
 import Layout from '../Layout.jsx';
+import { PrivateRoute } from '../PrivateRoute.jsx';
+import { RestrictedRoute } from '../RestrictedRoute.jsx';
 
 const HomePage = lazy(() => import('../../pages/Home/Home.jsx'));
 const RegisterForm = lazy(() => import('../../pages/Register.jsx'));
@@ -12,18 +15,19 @@ const NotFound = lazy(() => import('../../pages/NotFound.jsx'));
 
 function App() {
   const dispatch = useDispatch();
+  const { isRefreshing } = useAuth()
 
   useEffect(() => {
-    dispatch(fetchContacts())
+    dispatch(refreshUser())
   }, [dispatch])
-
-  return (
-<Layout>
+  return isRefreshing ? (<b> Refreshing user... </b>) : 
+  (
+    <Layout>
 <Routes>
 <Route path="/" element={<HomePage />} />
-<Route path="/register" element={<RegisterForm />} />
-<Route path="/login" element={<Login />} />
-<Route path="/contacts" element={<ContactList />} />
+<Route path="/register" element={<RestrictedRoute redirectTo='/contacts' component={<RegisterForm />} />} />
+<Route path="/login" element={<RestrictedRoute redirectTo='/contacts' component={<Login />} />} />
+<Route path="/contacts" element={<PrivateRoute redirectTo='/login' component={<ContactList />} />} />
 <Route path="*" element={<NotFound />} />
 </Routes>
 </Layout>
@@ -31,14 +35,3 @@ function App() {
 }
 
 export default App
-
-
-// import { ContactForm } from '../PhoneBook/Phonebook';
-// import { Filter } from '../Filter/Filter';
-// import { Card } from '../Contacts/contacts-styled';
-{/* <Card>
-<ContactForm />
-  <Filter />
-  <ContactList />
-</Card> */}
-{/* <PrivateRoute redirectTo='/login' component={<ContactList />}/> */}
