@@ -5,9 +5,9 @@ import { Routes, Route } from 'react-router-dom';
 import { refreshUser } from '../../redux/auth/operations.js';
 import useAuth from '../../hooks/useAuth.js';
 import ContactList from '../Contacts/Contacts';
-import Layout from '../Layout.jsx';
 import { PrivateRoute } from '../PrivateRoute.jsx';
 import { RestrictedRoute } from '../RestrictedRoute.jsx';
+import Layout from '../Layout.jsx';
 
 const HomePage = lazy(() => import('../../pages/Home/Home.jsx'));
 const RegisterForm = lazy(() => import('../../pages/Register.jsx'));
@@ -28,7 +28,7 @@ function App() {
 <Route path="/" element={<HomePage />} />
 <Route path="/register" element={<RestrictedRoute redirectTo='/contacts' component={<RegisterForm />} />} />
 <Route path="/login" element={<RestrictedRoute redirectTo='/contacts' component={<Login />} />} />
-<Route path="/contacts" element={<PrivateRoute redirectTo='/login' component={<ContactList />} />} />
+<Route path="/contacts" element={<PrivateRoute redirectTo='/login' component={<Layout />} />} />
 <Route path="*" element={<NotFound />} />
 </Routes>
 <Toaster />
