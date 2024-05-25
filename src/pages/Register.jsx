@@ -1,11 +1,17 @@
 import { Formik } from "formik";
-import { RegisterStyle, Label, Button, Span, Title, Form, Input } from '../components/Register/Register';
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { register } from '../redux/auth/operations';
+import DocumentTitle from "../components/Documention/DocumentTitle";
+import { RegisterStyle, Label, Button, Span, Form, Input } from '../components/Register/Register';
 
 const RegisterForm = () => {
+  const dispatch = useDispatch()
+
     return (
         <RegisterStyle>
             <Formik
-       initialValues={{ email: '', password: '' }}
+       initialValues={{ username: '', email: '', password: '' }}
        validate={values => {
          const errors = {};
          if (!values.email) {
@@ -17,13 +23,23 @@ const RegisterForm = () => {
          }
          return errors;
        }}
-       onSubmit={(values, { setSubmitting }) => {
-         setTimeout(() => {
-           alert(JSON.stringify(values, null, 2));
-           setSubmitting(false);
-         }, 400);
+       onSubmit={(values, actions) => {
+        
+        dispatch(
+          register({
+            name: values.username,
+            email: values.email,
+            password: values.password,
+          })
+        ).unwrap()
+        .then(() => {toast.success('register success')})
+        .catch(() => { toast.error('register error')})
+
+        actions.resetForm();
        }}
      >
+
+
        {({
          values,
          errors,
@@ -34,7 +50,10 @@ const RegisterForm = () => {
          isSubmitting,
        }) => (
          <Form onSubmit={handleSubmit}>
-          <Title>Let's create your account!</Title>
+          <DocumentTitle>
+          Let's create your account!
+          </DocumentTitle>
+            
             <Label>
               <Input
              type="text"
@@ -42,7 +61,7 @@ const RegisterForm = () => {
              name="username"
              onChange={handleChange}
              onBlur={handleBlur}
-             value={values.email}
+             value={values.username}
              required
            />
               </Label>
@@ -69,7 +88,7 @@ const RegisterForm = () => {
              value={values.password}
              required
            />  
-            </Label>         
+            </Label>       
            
            <Button type="submit" disabled={isSubmitting}>
              <Span>

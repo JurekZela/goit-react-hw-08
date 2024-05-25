@@ -1,4 +1,5 @@
 import { useEffect, lazy } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { refreshUser } from '../../redux/auth/operations.js';
@@ -30,6 +31,7 @@ function App() {
 <Route path="/contacts" element={<PrivateRoute redirectTo='/login' component={<ContactList />} />} />
 <Route path="*" element={<NotFound />} />
 </Routes>
+<Toaster />
 </Layout>
   )
 }

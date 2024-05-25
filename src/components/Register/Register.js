@@ -71,14 +71,6 @@ export const Form = styled.form`
   width: 320px;
 `;
 
-export const Title = styled.div`
-  color: #eee;
-  font-family: sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 30px;
-`;
-
 export const Input = styled.input`
   background-color: #303245;
   border-radius: 12px;

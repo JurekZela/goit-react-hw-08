@@ -1,7 +1,12 @@
 import { Formik } from "formik";
+import toast from "react-hot-toast"; 
+import { logIn } from '../redux/auth/operations';
+import { useDispatch } from "react-redux";
 import { LoginStyle, Label, Button, Span, Form, Title, Input } from '../components/Login/Login';
 
 const Login = () => {
+  const dispatch = useDispatch();
+
     return (
         <LoginStyle>
                  <Formik
@@ -17,11 +22,14 @@ const Login = () => {
          }
          return errors;
        }}
-       onSubmit={(values, { setSubmitting }) => {
-         setTimeout(() => {
-           alert(JSON.stringify(values, null, 2));
-           setSubmitting(false);
-         }, 400);
+       onSubmit={(values, actions) => {
+        dispatch(logIn({
+          email: values.email,
+          password: values.password,
+        })).unwrap()
+        .then(() => {toast.success('login success')}).catch(() => { toast.error('login error')})
+
+        actions.resetForm();
        }}
      >
        {({
