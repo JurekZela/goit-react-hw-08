@@ -13,7 +13,7 @@ const SignupSchema = Yup.object().shape({
       .min(9, 'Too Short!')
       .required('Required'),
   });
-export const ContactForm = () => {
+const ContactForm = () => {
     const dispatch = useDispatch();
 
 
@@ -53,3 +53,5 @@ export const ContactForm = () => {
   </Formik>
   )
 };
+
+export default ContactForm;

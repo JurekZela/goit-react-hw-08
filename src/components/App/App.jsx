@@ -8,6 +8,7 @@ import ContactList from '../Contacts/Contacts';
 import { PrivateRoute } from '../PrivateRoute.jsx';
 import { RestrictedRoute } from '../RestrictedRoute.jsx';
 import Layout from '../Layout.jsx';
+import ContactForm from '../PhoneBook/Phonebook.jsx';
 
 const HomePage = lazy(() => import('../../pages/Home/Home.jsx'));
 const RegisterForm = lazy(() => import('../../pages/Register.jsx'));
@@ -28,7 +29,7 @@ function App() {
 <Route path="/" element={<HomePage />} />
 <Route path="/register" element={<RestrictedRoute redirectTo='/contacts' component={<RegisterForm />} />} />
 <Route path="/login" element={<RestrictedRoute redirectTo='/contacts' component={<Login />} />} />
-<Route path="/contacts" element={<PrivateRoute redirectTo='/login' component={<Layout />} />} />
+<Route path="/contacts" element={<PrivateRoute redirectTo='/login' component={<ContactForm />} />} />
 <Route path="*" element={<NotFound />} />
 </Routes>
 <Toaster />

@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
+import { CiLogin } from "react-icons/ci";
 import { logOut } from '../../redux/auth/operations';
-import { UserName, Button } from './UserMenu-styled';
+import { UserName, NavStatus, Button } from './UserMenu-styled';
 import useAuth from "../../hooks/useAuth";
 
 const UserMenu = () => {
@@ -8,12 +9,13 @@ const UserMenu = () => {
     const { user } = useAuth();
 
     return (
-        <div>
+        <NavStatus>
             <UserName>Welcome, {user.name}</UserName>
             <Button type="button" onClick={() => dispatch(logOut())}>
+            <CiLogin />
                 Logout
             </Button>
-        </div>
+        </NavStatus>
     );
 };
 
