@@ -16,10 +16,10 @@ const ContactList = () => {
     const items = useSelector(itemsFilter);
 
     return (  
-      <div>
+      <Card>
       <ContactForm />
       <Filter />
-      <Card>
+      <div>
       {isLoading && <p>Loading contacts...</p>}
       {error && <p>{error}</p>}
       { items.map(({ id, name, number }) => (
@@ -31,8 +31,8 @@ const ContactList = () => {
        </ListContact>
        ))
     }
-     </Card>
-      </div>
+     </div>
+      </Card>
     )
 }
 
