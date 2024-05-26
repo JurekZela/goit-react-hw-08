@@ -1,6 +1,8 @@
 import { styled } from 'styled-components';
 
-export const Text = styled.p`
+export const Text = styled.span`
+  display: flex;
+  justify-content: center;
   margin-bottom: 10px;
   font-size: 30px;
   font-weight: 700;

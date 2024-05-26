@@ -10,6 +10,10 @@ import { Nav, NavigationLinks, UserInfo } from './Navigation';
             <NavigationLinks to='/'>
                 Home
             </NavigationLinks>
+            
+            <NavigationLinks to='/contacts'>
+            Contacts
+            </NavigationLinks>
         </Nav>
 
         { !isLoggedIn && (

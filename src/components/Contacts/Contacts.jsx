@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ListContact, RemoveButton, Title } from './contacts-styled';
 import { deleteContact } from '../../redux/contacts/operations';
 import { selectError, selectIsLoading } from '../../redux/contacts/selectors';
 import { itemsFilter } from '../../redux/filters/selectors';
+import { ListContact, RemoveButton, Title, Card } from './contacts-styled';
+import ContactForm from '../PhoneBook/Phonebook';
+import Filter from '../Filter/Filter';
 
 
 const ContactList = () => {
@@ -14,7 +16,10 @@ const ContactList = () => {
     const items = useSelector(itemsFilter);
 
     return (  
-     <ul>
+      <div>
+      <ContactForm />
+      <Filter />
+      <Card>
       {isLoading && <p>Loading contacts...</p>}
       {error && <p>{error}</p>}
       { items.map(({ id, name, number }) => (
@@ -26,7 +31,8 @@ const ContactList = () => {
        </ListContact>
        ))
     }
-     </ul>
+     </Card>
+      </div>
     )
 }
 

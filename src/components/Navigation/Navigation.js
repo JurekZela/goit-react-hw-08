@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const Nav = styled.nav`
 display: flex;
-gap: 5px;
+gap: 20px;
 `;
 
 export const NavigationLinks = styled(NavLink)`
@@ -20,9 +20,7 @@ display: inline-block;
     color: blue;
 }
 
-&:not(:last-child) {
-  margin-right: 30px;
-}
+
 `;
 
 export const UserInfo = styled.div`
