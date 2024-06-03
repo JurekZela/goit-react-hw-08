@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
+import Button from '@mui/material/Button';
 import { deleteContact } from '../../redux/contacts/operations';
 import { selectError, selectIsLoading } from '../../redux/contacts/selectors';
 import { itemsFilter } from '../../redux/filters/selectors';
-import { ListContact, RemoveButton, Title, Card } from './contacts-styled';
+import { ListContact, Title, Card } from './contacts-styled';
 import ContactForm from '../PhoneBook/Phonebook';
 import Filter from '../Filter/Filter';
 
@@ -27,7 +28,8 @@ const ContactList = () => {
           <Title>
           {name}: {number}
           </Title>
-         <RemoveButton onClick={() => dispatch(deleteContact(id))}>Delete</RemoveButton>
+         
+         <Button size="small" variant="outlined" color="error" onClick={() => dispatch(deleteContact(id))}>Delete</Button>
        </ListContact>
        ))
     }

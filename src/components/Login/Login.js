@@ -78,14 +78,6 @@ export const Form = styled.form`
   flex-wrap: wrap;
 `;
 
-export const Title = styled.div`
-color: #eee;
-font-family: sans-serif;
-font-size: 36px;
-font-weight: 600;
-margin-bottom: 30px;
-`;
-
 export const Input = styled.input`
    color: #fff;
     font-size: 1.25rem;
@@ -94,7 +86,7 @@ export const Input = styled.input`
     outline: none;
     height: calc(1em + 1.6em + 0.5em);
     width: 100%;
-    padding: 0.8em 1em;
+    padding: 0.5em 1em;
     border: 0.25em solid transparent;
     background-image: linear-gradient(#000, #000),
       linear-gradient(120deg, #f09 0%, #0ff 50%, #9f0 100%);

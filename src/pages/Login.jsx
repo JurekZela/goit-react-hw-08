@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { logIn } from '../redux/auth/operations';
 import DocumentTitle from '../components/Documention/DocumentTitle';
-import { LoginStyle, Label, Button, Span, Form, Title, Input } from '../components/Login/Login';
+import { LoginStyle, Label, Button, Span, Form, Input } from '../components/Login/Login';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -45,8 +45,9 @@ const Login = () => {
          /* and other goodies */
        }) => (
          <Form onSubmit={handleSubmit}>
-            <DocumentTitle>Welcome!</DocumentTitle>
-            <Label>
+           
+           <Label>
+           <DocumentTitle>Login</DocumentTitle>
             <Input
              type="email"
              name="email"

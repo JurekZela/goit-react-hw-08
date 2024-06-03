@@ -2,11 +2,14 @@ import { styled } from 'styled-components';
 
 export const Card = styled.div`
 display: flex;
-justify-content: center;
+align-items: center;
 flex-direction: column;
+margin-left: auto;
+margin-right: auto;
 border: 1px solid black;
 padding: 10px;
 gap: 20px;
+width: 380px;
 `;
 
 export const Title = styled.p`
@@ -22,5 +25,3 @@ align-items: flex-start;
 justify-content: flex-start;
 flex-direction: column;
 `;
-
-export const RemoveButton = styled.button``;

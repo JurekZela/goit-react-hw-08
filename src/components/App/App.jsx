@@ -12,7 +12,7 @@ import Layout from '../Layout.jsx';
 const HomePage = lazy(() => import('../../pages/Home/Home.jsx'));
 const RegisterForm = lazy(() => import('../../pages/Register.jsx'));
 const Login = lazy(() => import('../../pages/Login.jsx'));
-const NotFound = lazy(() => import('../../pages/NotFound.jsx'));
+const NotFound = lazy(() => import('../../pages/NotFound/NotFound.jsx'));
 
 function App() {
   const dispatch = useDispatch();

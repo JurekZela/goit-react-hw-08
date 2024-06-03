@@ -16,6 +16,8 @@ display: inline-block;
   color: black;
   font-size: 20px;
 
+
+
 &:hover {
     color: blue;
 }
@@ -24,6 +26,7 @@ display: inline-block;
 `;
 
 export const UserInfo = styled.div`
-display: block;
+display: flex;
     unicode-bidi: isolate;
+    gap: 10px;
     `;
