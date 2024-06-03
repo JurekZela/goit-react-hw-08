@@ -21,12 +21,9 @@ display: inline-block;
 &:hover {
     color: blue;
 }
-
-
 `;
 
 export const UserInfo = styled.div`
 display: flex;
-    unicode-bidi: isolate;
     gap: 10px;
     `;
