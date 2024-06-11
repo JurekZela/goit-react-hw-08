@@ -31,16 +31,16 @@ const ContactList = () => {
           </Title>
          
          <Button size="small" variant="outlined" color="error" onClick={() => {
-           Confirm.show(
-            'Please Confirm',
-            `Are you sure to delete ${name}?`,
-            'Yes',
-            'No',
-            function okCb() {
-              dispatch(deleteContact(id))
-            }
-          )
-         }}>Delete</Button>
+        Confirm.show(
+         'Please Confirm',
+         `Are you sure to delete ${name}?`,
+         'Yes',
+         'No',
+         function okCb() {
+           dispatch(deleteContact(id))
+         }
+       )
+      }}>Delete</Button>
        </ListContact>
        ))
     }
