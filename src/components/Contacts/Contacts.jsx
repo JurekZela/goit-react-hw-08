@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
 import Button from '@mui/material/Button';
 import { deleteContact } from '../../redux/contacts/operations';
 import { selectError, selectIsLoading } from '../../redux/contacts/selectors';
@@ -29,7 +30,17 @@ const ContactList = () => {
           {name}: {number}
           </Title>
          
-         <Button size="small" variant="outlined" color="error" onClick={() => dispatch(deleteContact(id))}>Delete</Button>
+         <Button size="small" variant="outlined" color="error" onClick={() => {
+           Confirm.show(
+            'Please Confirm',
+            `Are you sure to delete ${name}?`,
+            'Yes',
+            'No',
+            function okCb() {
+              dispatch(deleteContact(id))
+            }
+          )
+         }}>Delete</Button>
        </ListContact>
        ))
     }
