@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -26,6 +27,7 @@ export default function ContactForm  ()  {
     validationSchema={SignupSchema}
     onSubmit={async (values, actions) => {
       await new Promise((r) => setTimeout(r, 500));
+      toast.success('Add contact 🥳')
       
       dispatch(addContact({
         name: values.name,

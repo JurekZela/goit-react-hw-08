@@ -1,10 +1,13 @@
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "./operations";
+import { logout, } from "../auth/authOperations";
 
 const initialState = {
   items: [],
   loading: false,
-  error: null
+  error: null,
 };
 
 const contactsSlice = createSlice({
@@ -28,6 +31,9 @@ const contactsSlice = createSlice({
       state.error = null;
       state.items = state.items.filter(item => item.id !== action.payload.id)
     })
+    .addCase(logout.fulfilled, () => {
+      return initialState;
+    })
     .addMatcher(isAnyOf(deleteContact.pending, fetchContacts.pending, addContact.pending), (state) => {
       state.loading = true;
     })
@@ -38,4 +44,8 @@ const contactsSlice = createSlice({
   } 
 })
 
-export  default contactsSlice.reducer;
+export const persistedContactsReducer = persistReducer({
+  key: 'root',
+  storage,
+  whitelist: ['items']
+}, contactsSlice.reducer) ;

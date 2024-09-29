@@ -10,6 +10,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 30px;
   background: linear-gradient(to right, rgb(161, 255, 206), rgb(250, 255, 209));
+
+  
+    display: flex;
+    justify-content: center;
+    height: 100vh;
 }
 
 code {
@@ -53,10 +58,6 @@ p {
   list-style: none;
   }
   
-  #root {
-display: flex;
-justify-content: center;
-  }
 `;
 
 export default GlobalStyled;

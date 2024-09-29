@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const Card = styled.div`
 display: flex;
-justify-content: center;
 flex-direction: column;
-border: 1px solid black;
+align-items: center;
+border-left: 1px solid;
+border-right: 1px solid black;
 padding: 10px;
 gap: 20px;
 `;
@@ -22,5 +23,3 @@ align-items: flex-start;
 justify-content: flex-start;
 flex-direction: column;
 `;
-
-export const RemoveButton = styled.button``;
