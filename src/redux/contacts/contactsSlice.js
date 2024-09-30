@@ -1,5 +1,3 @@
-import { persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "./operations";
 import { logout, } from "../auth/authOperations";
@@ -21,13 +19,11 @@ const contactsSlice = createSlice({
       state.items = action.payload;
     })
     .addCase(addContact.fulfilled, (state, action) => {
-      
       state.loading = false;
       state.error = null;
       state.items.push(action.payload);
     })
     .addCase(deleteContact.fulfilled, (state, action) => {
-      state.openModal = true;
       state.loading = false;
       state.error = null;
       state.items = state.items.filter(item => item.id !== action.payload.id) 
@@ -45,8 +41,4 @@ const contactsSlice = createSlice({
   },
 })
 
-export const persistedContactsReducer = persistReducer({
-  key: 'root',
-  storage,
-  whitelist: ['items']
-}, contactsSlice.reducer) ;
+export const contactsReducer = contactsSlice.reducer
