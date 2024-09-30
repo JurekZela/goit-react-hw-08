@@ -27,9 +27,10 @@ const contactsSlice = createSlice({
       state.items.push(action.payload);
     })
     .addCase(deleteContact.fulfilled, (state, action) => {
+      state.openModal = true;
       state.loading = false;
       state.error = null;
-      state.items = state.items.filter(item => item.id !== action.payload.id)
+      state.items = state.items.filter(item => item.id !== action.payload.id) 
     })
     .addCase(logout.fulfilled, () => {
       return initialState;
@@ -41,7 +42,7 @@ const contactsSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     })
-  } 
+  },
 })
 
 export const persistedContactsReducer = persistReducer({
