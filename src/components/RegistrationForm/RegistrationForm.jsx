@@ -1,8 +1,21 @@
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
+import * as Yup from 'yup';
 import toast from "react-hot-toast";
 import { register } from '../../redux/auth/authOperations';
 import { RegisterStyle, Label, Button, Span, Form, Input } from './RegistrationForm-styled';
+
+const SignupSchema = Yup.object().shape({
+  username: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  password: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+});
 
 
 const RegistrationForm = () => {
@@ -12,20 +25,11 @@ const RegistrationForm = () => {
         <RegisterStyle>
           <Formik
                    initialValues={{ username: '', email: '', password: '' }}
-                   validate={values => {
-                     const errors = {};
-                     if (!values.email) {
-                       errors.email = 'Required';
-                     } else if (
-                       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                     ) {
-                       errors.email = 'Invalid email address';
-                     }
-                     return errors;
-                   }}
-                   onSubmit={(values, actions) => {
-                    
-                    dispatch(
+                   validationSchema={SignupSchema}
+
+                   onSubmit={async(values, actions) => {  
+                            
+                   await dispatch(
                       register({
                         name: values.username,
                         email: values.email,
@@ -82,10 +86,10 @@ const RegistrationForm = () => {
                />  
                 </Label>       
                
-               <Button type="submit" disabled={isSubmitting}>
-                 <Span>
+               <Button type="submit"  disabled={isSubmitting}>
+                <Span>
                  Register
-                 </Span>
+                 </Span> 
                </Button>
               </Form>
             )}

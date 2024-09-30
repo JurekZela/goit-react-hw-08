@@ -1,8 +1,18 @@
 import { Formik } from "formik";
+import * as Yup from 'yup';
 import toast from "react-hot-toast"; 
 import { useDispatch } from "react-redux";
 import { login } from '../../redux/auth/authOperations';
 import { LoginStyle, Label, Button, Span, Form, Input } from './LoginForm-styled';
+
+const SignupSchema = Yup.object().shape({
+  password: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+});
+
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -11,17 +21,7 @@ const LoginForm = () => {
         <LoginStyle>
                  <Formik
        initialValues={{ email: '', password: '' }}
-       validate={values => {
-         const errors = {};
-         if (!values.email) {
-           errors.email = 'Required';
-         } else if (
-           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-         ) {
-           errors.email = 'Invalid email address';
-         }
-         return errors;
-       }}
+       validationSchema={SignupSchema}
        onSubmit={(values, actions) => {
         dispatch(login({
           email: values.email,
