@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { CiLogin } from "react-icons/ci";
-import { logout } from '../../redux/auth/authOperations';
+import { logout } from '../../redux/auth/operations';
 import { UserName, NavStatus, Button } from './UserMenu-styled';
 import useAuth from "../../hooks/useAuth";
 

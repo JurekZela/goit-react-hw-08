@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import toast from "react-hot-toast";
-import { register } from '../../redux/auth/authOperations';
+import { register } from '../../redux/auth/operations';
 import { RegisterStyle, Label, Button, Span, Form, Input } from './RegistrationForm-styled';
 
 const SignupSchema = Yup.object().shape({

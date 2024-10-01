@@ -1,7 +1,7 @@
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { refreshUser } from '../../redux/auth/authOperations'; 
+import { refreshUser } from '../../redux/auth/operations'; 
 import useAuth from '../../hooks/useAuth';
 import Layout from '../Layout';
 import { RestrictedRoute } from '../RestrictedRoute';
