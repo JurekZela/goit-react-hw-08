@@ -10,6 +10,10 @@ padding: 10px;
 gap: 20px;
 `;
 
+export const ButtonStyle = styled.div`
+display: flex;
+`;
+
 export const Title = styled.p`
 font-weight: 350px;
 font-size: 17px;
